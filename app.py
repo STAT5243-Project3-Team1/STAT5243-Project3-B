@@ -55,7 +55,7 @@ pio.templates.default = "app_theme"
 GA_MEASUREMENT_ID = "G-D8T3NJKCNN"
 AB_VERSION = "B"
 
-ga_head_tags = ui.TagList(
+ga_head = ui.head_content(
     ui.tags.script(
         src=f"https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}",
         async_="",
@@ -776,6 +776,7 @@ APP_CSS = """
 # UI
 # ---------------------------------------------------------------------------
 app_ui = ui.page_navbar(
+    ga_head,
     # ── Load Tab ───────────────────────────────────────────────────────────
     ui.nav_panel(
         "Load",
@@ -1289,7 +1290,6 @@ app_ui = ui.page_navbar(
     theme=shinyswatch.theme.lux,
     fillable=False,
     header=ui.div(
-        ga_head_tags,
         ui.busy_indicators.use(),
         ui.tags.style(APP_CSS),
         ui.div(
